@@ -97,7 +97,7 @@ handle_cast(_Msg, State) ->
 %%                                       {stop, Reason, State}
 %% Description: Handling all non call/cast messages
 %%--------------------------------------------------------------------
-handle_info({tcp_closed, Socket}, State) ->
+handle_info({tcp_closed, Socket}, State=#state{socket = Socket}) ->
   {noreply, State#state{socket = undefined}};
 handle_info(_Info, State) ->
   {noreply, State}.
